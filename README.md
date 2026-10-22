@@ -42,6 +42,10 @@ The script only ever writes inside its own snapshots folder, and it never delete
 6. Check your snapshots folder: you should find a dated snapshot, a log file, and `state.json` showing the run completed.
 7. Optional: put it on a schedule with the clock icon (Triggers) → time-driven → weekly, running `runSnapshot`. When a monthly or yearly is due, that week's run automatically becomes the bigger type.
 
+## A tip for big files
+
+If a few very large files live inside your folders (videos, disk images, big archives), you have two ways to keep their bytes out of every snapshot. One is listing them in the exclude patterns, which works but gets tedious when there are many. The approach I use instead: move the heavy files into a single folder that sits **outside** the snapshot scope (mine is called `10_Heavy Files`, and my include pattern only covers `01_` through `09_`), and leave a **shortcut** to each file in its original place. Because the script copies shortcuts as shortcuts, every snapshot keeps the pointer exactly where it belongs without copying the gigabytes, and the heavy files stay in your Drive, just out of snapshot range. Mix and match however you like, the exclude patterns are there if you prefer them.
+
 ## Good to know
 
 - Snapshots are real copies, so **each one uses Drive storage** roughly equal to the size of the folders you include. This is a "worth it if you have the space" kind of backup.
