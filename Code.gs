@@ -24,7 +24,7 @@
  *      Example: '^0[1-9]_' selects 01_Career, 02_Personal, ... but not
  *      10_Heavy Files or 11_Projects.
  *   2. EXCLUDE — while copying, every file and folder is checked by its
- *      path (relative to My Drive root, e.g. '06_Education/01_Lamatepec'
+ *      path (relative to My Drive root, e.g. '03_Finance/2024 Taxes'
  *      or '01_Career/Resumes/old.pdf') against `excludePatterns`. A
  *      match is skipped — and when a FOLDER matches, its entire subtree
  *      is skipped with it. Excludes always win over the include rule.
@@ -105,12 +105,12 @@ var CONFIG = {
 
   // 2) EXCLUDE: regexes tested against each item's path (see header).
   //    A matching file is skipped; a matching folder prunes its subtree.
-  //    Example: ['^06_Education/04_Archive_School(/|$)', 'scratch']
+  //    Example: ['^05_Archive(/|$)', 'scratch']
   excludePatterns: [],
 
   // 3) YEARLY-ONLY: same matching as EXCLUDE, but only skipped on
   //    weekly/monthly runs; yearly runs include these paths.
-  //    Example: ['^06_Education/01_Lamatepec(/|$)']
+  //    Example: ['^Archive/Old School Records(/|$)']
   yearlyOnlyPatterns: [],
 
   // --- Layout inside the snapshots folder (rarely changed) ------------
@@ -476,7 +476,7 @@ function startAttempt_(xx, systemFolder, runType, rules) {
 // --------------------------------------------------------------- COPY WALK
 /**
  * Deep-copies srcFolder into dstFolder. relPath is srcFolder's path
- * from My Drive root (e.g. '06_Education/01_Lamatepec') and is what the
+ * from My Drive root (e.g. '03_Finance/2024 Taxes') and is what the
  * EXCLUDE / YEARLY-ONLY patterns are tested against. Skips anything
  * already in the destination (that's what makes re-walking after an
  * interruption safe). Returns TRUE only when the folder's whole subtree
